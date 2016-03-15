@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Magizon</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="persoon1">Tim</string>
+    <string name="persoon2">Tom</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Alle Login strings -->
+    <string name="login">Log in met magister:</string>
+    <string name="school">Schoolnaam:</string>
+    <string name="naam">Gebruikersnaam:</string>
+    <string name="wachtwoord">Wachtwoord:</string>
+    <string name="loginknop">Log in!</string>
+    <string name="title_activity_settings">Instellingen</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+
+    <string name="pref_title_display_name">Display naam</string>
+    <string name="pref_default_display_name">Tim</string>
+
+    <string name="pref_title_add_friends_to_messages">Vrienden in notificaties koppelen</string>
+    <string-array name="pref_example_list_titles">
+        <item>Altijd</item>
+        <item>Nooit</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequentie</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>Elke 15 minuten</item>
+        <item>Elke 30 minuten</item>
+        <item>Elk uur</item>
+        <item>Elke 3 uur</item>
+        <item>Elke dag</item>
+        <item>Nooit</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">Systeem sync opties</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notificaties</string>
+
+    <string name="pref_title_new_message_notifications">Les notificaties</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Stil</string>
+
+    <string name="pref_title_vibrate">Vibreren</string>
+
+    <string name="pref_theme">"Licht Thema</string>
+    <string name="pref_theme_summary">Verander tussen het lichte en donkere thema.</string>
+
+
+</resources>
