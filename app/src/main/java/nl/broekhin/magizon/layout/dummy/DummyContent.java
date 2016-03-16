@@ -34,13 +34,6 @@ public class DummyContent {
         }
     }
 
-    //if (DummyContent.ITEMS.isEmpty())
-    public static void addTheItems() {
-        //DummyContent.addItem(new DummyItem("0","Biologie - NIJ", "Les 1"));
-        //DummyContent.addItem(new DummyItem("1","Nedrlands - VRR", "Les 2"));
-        //DummyContent.addItem(new DummyItem("2", "3", "Les 3"));
-    }
-
     private static void addItem(DummyItem item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
