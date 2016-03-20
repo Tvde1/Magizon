@@ -25,7 +25,10 @@ public class DummyContent {
 
     //super.onCreate(savedInstanceState);
     private static final int COUNT = 5;
-    private static String Les[] = {"Biologie - NIJ", "Scheikunde - BEV", "Nederlands - VRR", "Tussenuur", "Engels - ALW", "Wiskunde B - HOM"};
+    private static String TimLes[] = {"Biologie - NIJ- 135", "Scheikunde - BEV- 435", "Nederlands - VRR - 716", "Tussenuur", "Engels - ALW - 421", "Wiskunde B - HOM - 316"};
+    private static String TomLes[] = {"Tussenuur", "Tussenuur ", "Engels - DIE - 423", "Scheikunde - MAL - 434", "Lichamelijke Opvoeding - KOK,WEN - 603", "Wiskunde B - HOM - 316"};
+    //private static String iemand;
+    private static String a;
 
     static {
         // Add some sample items.
@@ -39,9 +42,42 @@ public class DummyContent {
         ITEM_MAP.put(item.id, item);
     }
 
+    public static void refresh(){
+        ITEMS.clear();
+        for (int i = 1; i <= COUNT; i++) {
+            addItem(createDummyItem(i));
+        }
+
+    }
+
+    public static void setPersoon(String persoon){
+        a = persoon;
+    }
+
+    private static String getPersoon() {
+
+        if (a == null) {
+            a = "Tim";
+        }
+
+        return a;
+    }
+
     private static DummyItem createDummyItem(int position) {
-        //return new DummyItem(String.valueOf(position), "Les " + position, makeDetails(position));
-        return new DummyItem(String.valueOf(position), Les[position], "Niks");
+        DummyItem item;
+        String iemand = getPersoon();
+
+
+        if (iemand.equals("Tim")) {
+            item = new DummyItem(String.valueOf(position), TimLes[position], "Niks");
+        } else if (iemand.equals("Tom")) {
+            item = new DummyItem(String.valueOf(position), TomLes[position], "Niks");
+        } else {
+            item = new DummyItem(String.valueOf(position), "error, geen persoon", "Niks");
+        }
+
+        return item;
+
     }
 
     private static String makeDetails(int position) {

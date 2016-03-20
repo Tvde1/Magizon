@@ -109,5 +109,17 @@
                 android:inputType="textPassword" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log In"
+                android:id="@+id/loginknop" />
+        </TableRow>
+
     </LinearLayout>
 </FrameLayout>

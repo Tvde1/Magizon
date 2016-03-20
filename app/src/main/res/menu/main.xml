@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/persoon1"
+        android:id="@+id/TimOptie"
         android:orderInCategory="100"
         android:title="@string/persoon1"
         app:showAsAction="never" />
     <item
-        android:id="@+id/persoon2"
+        android:id="@+id/TomOptie"
         android:orderInCategory="100"
         android:title="@string/persoon2"
         app:showAsAction="never" />

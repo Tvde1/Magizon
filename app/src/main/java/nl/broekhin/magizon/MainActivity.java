@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import nl.broekhin.magizon.layout.LoginFragment;
 import nl.broekhin.magizon.layout.VandaagFragment;
+import nl.broekhin.magizon.layout.dummy.DummyContent;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    public String persoon;
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -72,19 +75,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.persoon1) {
-            return true;
+        if (id == R.id.TimOptie) {
+            DummyContent.setPersoon("Tim");
+            DummyContent.refresh();
+            setFragment(new VandaagFragment());
+        } else if (id == R.id.TomOptie) {
+            DummyContent.setPersoon("Tom");
+            DummyContent.refresh();
+            setFragment(new VandaagFragment());
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        Fragment fragment;
+        //Fragment fragment;
 
 
         // Handle navigation view item clicks here.
@@ -110,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    protected void setFragment(Fragment fragment) {
+    public void setFragment(Fragment fragment) {
         android.support.v4.app.FragmentTransaction t = getSupportFragmentManager().beginTransaction();
         t.replace(R.id.fragment_container, fragment);
         t.commit();

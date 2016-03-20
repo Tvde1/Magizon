@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import nl.broekhin.magizon.R;
 
@@ -60,14 +63,32 @@ public class LoginFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        //return inflater.inflate(R.layout.fragment_login, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_login,
+                container, false);
+        Button button = (Button) view.findViewById(R.id.loginknop);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                loginTest();
+            }
+        });
+        return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -107,4 +128,39 @@ public class LoginFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    public void loginTest(){
+
+        EditText textvak_gebruikersnaam = (EditText)getActivity().findViewById(R.id.gebruikersnaam);
+        EditText textvak_wachtwoord = (EditText)getActivity().findViewById(R.id.wachtwoord);
+        EditText textvag_school = (EditText)getActivity().findViewById(R.id.school);
+
+        String gebruikersnaam = textvak_gebruikersnaam.getText().toString();
+        String wachtwoord = textvak_wachtwoord.getText().toString();
+        String school = textvag_school.getText().toString();
+        String bericht;
+
+        if (school.isEmpty() || wachtwoord.isEmpty() || school.isEmpty()){
+            bericht = "Vul alle velden in";
+
+        } else {
+
+            if (gebruikersnaam.equals("Tim") && wachtwoord.equals("1234")) {
+
+                bericht = "Ingelogd als Tim!";
+
+             } else if(gebruikersnaam.equals("Tom") && wachtwoord.equals("4321")) {
+
+                bericht = "Ingelogd als Tom!.";
+
+            } else {
+
+                bericht = "Onjuist gebruikersnaam of wachtwoord";
+
+            }
+        }
+
+        Toast.makeText(getActivity(), bericht, Toast.LENGTH_SHORT).show();
+    }
+
 }

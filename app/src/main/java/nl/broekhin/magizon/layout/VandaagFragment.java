@@ -74,6 +74,12 @@ public class VandaagFragment extends Fragment {
         return view;
     }
 
+    public void refresh() {
+
+
+
+    }
+
 
     @Override
     public void onAttach(Context context) {
