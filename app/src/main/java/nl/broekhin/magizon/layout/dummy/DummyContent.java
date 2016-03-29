@@ -32,7 +32,7 @@ public class DummyContent {
 
     static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
+        for (int i = 0; i <= COUNT; i++) {
             addItem(createDummyItem(i));
         }
     }
@@ -69,11 +69,11 @@ public class DummyContent {
 
 
         if (iemand.equals("Tim")) {
-            item = new DummyItem(String.valueOf(position), TimLes[position], "Niks");
+            item = new DummyItem(String.valueOf(position+1) + "e uur:", TimLes[position], "Niks");
         } else if (iemand.equals("Tom")) {
-            item = new DummyItem(String.valueOf(position), TomLes[position], "Niks");
+            item = new DummyItem(String.valueOf(position+1) + "e uur:", TomLes[position], "Niks");
         } else {
-            item = new DummyItem(String.valueOf(position), "error, geen persoon", "Niks");
+            item = new DummyItem(String.valueOf(position+1) + "e uur:", "error, geen persoon", "Niks");
         }
 
         return item;

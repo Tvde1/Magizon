@@ -1,17 +1,22 @@
 package nl.broekhin.magizon;
 
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import java.util.Calendar;
 
 import nl.broekhin.magizon.layout.LoginFragment;
 import nl.broekhin.magizon.layout.VandaagFragment;
@@ -27,13 +32,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //        Snackbar.make(view, "Nog ... minuten!", Snackbar.LENGTH_LONG)
-        //                .setAction("Action", null).show();
-        //    }
-        //});
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, refreshTijd(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -128,4 +134,85 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         t.commit();
     }
 
+    public String refreshTijd() {
+
+        int berekenUren = 99;
+        int berekenMinuten = 0;
+        String bericht;
+        String beep = "";
+
+        Calendar c = Calendar.getInstance();
+        int nuUren = c.get(Calendar.HOUR_OF_DAY);
+        int nuMinuten = c.get(Calendar.MINUTE);
+
+        int u = 60;
+        //int i = 1;
+
+        int nuTotaalMinuten = nuUren * u + nuMinuten;
+
+        int lesMinuten[] = {8*u + 30, 9 * u + 20, 10 * u + 10, 11 * u, 11 * u + 20, 12 * u + 10, 13 * u, 13 * u + 30, 14 * u + 20, 15 * u + 10, 16 * u};
+
+
+        for (int i=0; i < lesMinuten.length; i++) {
+
+            Log.d("i", "i = " + i);
+
+            if (lesMinuten[i] - nuTotaalMinuten >= 0) {
+
+                if ((lesMinuten[i] - nuTotaalMinuten) >= 60) {
+
+                    berekenUren = ((lesMinuten[i] - nuTotaalMinuten) / 60);
+                    berekenMinuten = (lesMinuten[i] - nuTotaalMinuten) - berekenUren * 60;
+
+                    Log.i("Uur", "Het is MEER dan 60 minuten.");
+
+
+                } else {
+
+                    berekenUren = 0;
+                    berekenMinuten = lesMinuten[i] - nuTotaalMinuten;
+
+                    Log.i("Uur", "Het is MINDER dan 60 minuten.");
+
+                }
+
+                Log.i("Getallen", "nuTotaalMinuten = " + nuTotaalMinuten + ". lesMinuten[i] = " + lesMinuten[i]);
+                break;
+
+
+            }
+        }
+
+        if (berekenUren == 99) {
+
+            bericht = "Je hebt geen les meer vandaag.";
+
+        } else if (berekenUren == 0 && berekenMinuten != 0) {
+
+            if (berekenMinuten == 1) {
+
+                bericht = "Nog " + berekenMinuten + " minuut tot de bel gaat.";
+
+            } else {
+
+                bericht = "Nog " + berekenMinuten + " minuten tot de bel gaat.";
+
+            }
+        } else if (berekenMinuten == 0 && berekenUren != 0) {
+
+            bericht = "Nog " + berekenUren + " uur tot de bel gaat.";
+
+        } else if (berekenMinuten == 0 && berekenUren == 0) {
+
+            bericht = "De bel gaat nu!";
+
+        } else {
+
+            bericht = "Nog " + berekenUren + " uur en " + berekenMinuten + " minuten tot de bel gaat.";
+
+        }
+
+        return bericht;
+
+    }
 }
